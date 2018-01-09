@@ -1,17 +1,12 @@
-#!/usr/bin
-
 pipeline {
-  agent any
-  stages {
-    stage('myStage'){
-      steps {
-        sh 'ls -la' 
-      }
+    agent {
+        docker { image 'node:7-alpine' }
     }
-    stage('Build') {
-      steps { 
-        sh 'ls' 
-      }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
-  }
 }
